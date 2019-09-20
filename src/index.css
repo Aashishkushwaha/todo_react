@@ -1,13 +1,256 @@
-body {
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.App {
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url("https://images.unsplash.com/photo-1547480053-7d174f67b557?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+  height: 100vh;
+  position: relative;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.home {
+  height: 80vh;
+  background-color: white;
+  width: 40rem;
+  border: 1.2rem solid #f6f6f6;
+  border-radius: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1rem 4rem rgba(236, 236, 236, 0.3);
+}
+
+.header {
+  height: 8vh;
+  /* background-color: #f28f3d; */
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hamburger-box {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: #f28f3d;
+}
+
+.hemburger-box--icon {
+  cursor: pointer;
+}
+
+.material-icons {
+  font-size: 3rem;
+}
+
+.header__logo-box {
+  color: #f28f3d;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2.5rem;
+  transform: translate(-50%, -50%);
+}
+
+.sidedrawer--wrapper {
+  height: 80vh;
+  background-color: white;
+  width: 40rem;
+  border: 1.2rem solid #f6f6f6;
+  border-radius: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  display: flex;
+}
+
+.sidebar__content--container {
+  width: 60%;
+  background-color: #f28f3d;
+  height: 100%;
+  padding: 2rem;
+}
+
+.sidebar__items {
+  list-style: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.sidebar__items > li {
+  cursor: pointer;
+  display: inline-block;
+  margin: 1rem 0;
+  padding-bottom: 0.3rem;
+}
+
+.sidebar__items > li span {
+  border-bottom: 2px solid transparent;
+}
+
+.sidebar__items > li span:hover {
+  border-bottom: 2px solid white;
+}
+
+.sidebar__backdrop--container {
+  background-color: rgba(255, 255, 255, 1);
+  filter: brightness(20%);
+  height: 100%;
+  flex: 1;
+}
+
+.sidebar__header {
+  width: 100%;
+  height: 5vh;
+  color: white;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.sidebr__back-box {
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidebar__header--logo-box {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  font-size: 2rem;
+  transform: translate(-20%, -50%);
+}
+
+.sidebar__back-box--icon {
+  cursor: pointer;
+}
+
+.bullet {
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+
+.bullet--diamond {
+  -webkit-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.bullet--white {
+  background-color: white;
+}
+
+.flex-layout {
+  display: flex;
+  align-items: center;
+}
+
+.todos__container {
+  height: 64vh;
+  /* background-color: orangered; */
+  /* overflow-y: scroll; */
+}
+
+.footer {
+  height: 5vh;
+  background-color: #f6f6f6;
+}
+
+.add-item-box {
+  height: 5rem;
+  width: 5rem;
+  background-color: #f28f3d;
+  border-radius: 100%;
+  position: absolute;
+  right: 1rem;
+  bottom: 1.2rem;
+}
+
+.add-item--icon {
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.form-group {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.form-group > :last-child {
+  width: 100%;
+  font-size: 2.6rem;
+  border: none;
+  height: 4rem;
+  background-color: transparent;
+  border-bottom: 2px solid #f28f3d;
+  margin: 0 auto;
+  outline: none;
+  color: #f28f3d;
+  border-radius: 0.4rem;
+}
+
+.margin-bottom-medium {
+  margin-bottom: 4rem;
+}
+
+.margin-bottom-small {
+  margin-bottom: 2rem;
+}
+
+label {
+  text-align: justify;
+  font-size: 1.4rem;
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+input {
+  font-size: 3rem !important;
+  padding: 0 1rem !important;
+}
+
+
+@media screen and (max-width: 550px){
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 400px){
+  html {
+    font-size: 38.5%;
+  }
 }
