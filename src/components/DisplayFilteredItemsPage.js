@@ -1,43 +1,51 @@
 import React, { Component } from "react";
 
-// design -- https://cdn.dribbble.com/users/3718850/screenshots/6635602/todo_list_app.jpg
-
-class HomePage extends Component {
+class DisplayFilteredItemsPage extends Component {
   render() {
+    let label =
+      this.props.filter === "SHOW_ACTIVE"
+        ? "Active Items"
+        : this.props.filter === "SHOW_ALL"
+        ? "All Items"
+        : "Completed Items";
+
+    let showItems =
+      this.props.filter === "SHOW_ACTIVE"
+        ? this.props.todoItems.filter(todoitem => {
+            if (!todoitem.completed) return todoitem;
+          })
+        : this.props.filter === "SHOW_COMPLETED"
+        ? this.props.todoItems.filter(todoitem => {
+            if (todoitem.completed) return todoitem;
+          })
+        : this.props.todoItems;
+
     return (
       <div className="home">
         <div className="header">
           <div className="hamburger-box">
             <i
-              onClick={this.props.sideDrawerHandler}
+              onClick={this.props.displayHomefromFilteredItems}
               className="material-icons hemburger-box--icon"
             >
-              sort
+              keyboard_backspace
             </i>
           </div>
           <h2 className="header__logo-box">
-            <span>Todo List</span>
+            <span>{label}</span>
           </h2>
         </div>
         <main>
           <div className="todos__container">
-            {this.props.todoItems.map((todoItem, index) => {
+            {showItems.map((todoItem, index) => {
               return (
                 <div className="todo-item-box" key={todoItem.id}>
                   <div className="checkbox-div">
                     {/* <input type="radio" /> */}
                     {todoItem.completed ? (
-                      <span
-                        onClick={() => this.props.completeItem(index)}
-                        className="virtual-radio-button"
-                      >
-                        &nbsp;
-                      </span>
+                      <span className="virtual-radio-button">&nbsp;</span>
                     ) : (
-                      <span
-                        onClick={() => this.props.completeItem(index)}
-                        className="virtual-radio-button-invisible"
-                      >
+                      <span className="virtual-radio-button-invisible">
                         &nbsp;
                       </span>
                     )}
@@ -57,18 +65,10 @@ class HomePage extends Component {
               );
             })}
           </div>
-          <div className="add-item-box">
-            <i
-              onClick={this.props.addItemHandler}
-              className="material-icons add-item--icon"
-            >
-              add
-            </i>
-          </div>
         </main>
       </div>
     );
   }
 }
 
-export default HomePage;
+export default DisplayFilteredItemsPage;

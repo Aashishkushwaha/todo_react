@@ -29,19 +29,37 @@ class SideDrawer extends Component {
             <li>
               <div className="flex-layout">
                 <div className="bullet bullet--white bullet--diamond" />
-                <span>Show Active Items</span>
+                <span
+                  onClick={() =>
+                    this.props.displayFilteredItemsPage("SHOW_ACTIVE")
+                  }
+                >
+                  Show Active Items
+                </span>
               </div>
             </li>
             <li>
               <div className="flex-layout">
                 <div className="bullet bullet--white bullet--diamond" />
-                <span>Show Completed Items</span>
+                <span
+                  onClick={() =>
+                    this.props.displayFilteredItemsPage("SHOW_COMPLETED")
+                  }
+                >
+                  Show Completed Items
+                </span>
               </div>
             </li>
             <li>
               <div className="flex-layout">
                 <div className="bullet bullet--white bullet--diamond" />
-                <span>Show All Items</span>
+                <span
+                  onClick={() =>
+                    this.props.displayFilteredItemsPage("SHOW_ALL")
+                  }
+                >
+                  Show All Items
+                </span>
               </div>
             </li>
           </ul>
