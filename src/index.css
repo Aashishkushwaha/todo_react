@@ -6,8 +6,11 @@
   box-sizing: border-box;
 }
 
+/* variable */
+
 html {
   font-size: 62.5%;
+  --bg-color-primary: #f28f3d;
 }
 
 body {
@@ -69,7 +72,7 @@ code {
   top: 50%;
   left: 1rem;
   transform: translateY(-50%);
-  color: #f28f3d;
+  color: var(--bg-color-primary);
 }
 
 .hemburger-box--icon {
@@ -81,10 +84,16 @@ code {
 }
 
 .header__logo-box {
-  color: #f28f3d;
+  color: var(--bg-color-primary);
   position: absolute;
   top: 50%;
   left: 50%;
+  /* -webkit-background-clip: text;
+  background: linear-gradient(
+    to right bottom,
+    var(--bg-color-primary),
+    var(--bg-color-secondary)
+  ); */
   font-size: 2.5rem;
   transform: translate(-50%, -50%);
 }
@@ -105,7 +114,7 @@ code {
 
 .sidebar__content--container {
   width: 70%;
-  background-color: #f28f3d;
+  background-color: var(--bg-color-primary);
   height: 100%;
   padding: 2rem;
 }
@@ -118,7 +127,7 @@ code {
 
 .sidebar__items > li {
   cursor: pointer;
-  display: inline-block;
+  display: block;
   margin: 1rem 0;
   padding-bottom: 0.3rem;
 }
@@ -200,11 +209,23 @@ code {
 .add-item-box {
   height: 5rem;
   width: 5rem;
-  background-color: #f28f3d;
+  background-color: var(--bg-color-primary);
   border-radius: 100%;
   position: absolute;
   right: 1rem;
   bottom: 1.2rem;
+  animation: moveDownAddButton 3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@keyframes moveDownAddButton {
+  0% {
+    bottom: 70%;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .add-item--icon {
@@ -228,10 +249,10 @@ code {
   border: none;
   height: 4rem;
   background-color: transparent;
-  border-bottom: 2px solid #f28f3d;
+  border-bottom: 2px solid var(--bg-color-primary);
   margin: 0 auto;
   outline: none;
-  color: #f28f3d;
+  color: var(--bg-color-primary);
   border-radius: 0.4rem;
 }
 
@@ -260,14 +281,17 @@ input {
   margin: 1rem 0rem;
   grid-template-columns: 1fr 7fr;
   color: white;
+  border-radius: 0.4rem;
   grid-gap: 0.8rem;
   padding: 1rem;
-  background-color: #f28f3d;
+  background-color: var(--bg-color-primary);
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3);
 }
 
 .checkbox-div {
   /* background-color: blue; */
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -278,8 +302,8 @@ input {
   position: absolute;
   display: inline-block;
   border: 0.3rem solid white;
-  width: 100%;
-  height: 55%;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
 }
 
@@ -300,8 +324,8 @@ input {
   position: absolute;
   display: inline-block;
   border: 0.3rem solid white;
-  width: 100%;
-  height: 55%;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
 }
 
@@ -334,6 +358,78 @@ input {
   align-items: center;
 }
 
+#add-item-submit-button {
+  border: none;
+}
+
+.field-item-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-item-div:nth-child(even) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.feild-item-label {
+  font-size: 1rem;
+}
+
+.description-label {
+  font-size: 0.9rem;
+  position: absolute;
+  top: 0.5rem;
+  left: -0.3rem;
+  animation: moveup 1s ease-in-out;
+}
+
+.description-label-invisible {
+  opacity: 0;
+  top: 0.5rem;
+  left: -0.3rem;
+  font-size: 0.9rem;
+  position: absolute;
+  animation: movedown 1s ease-in-out;
+}
+
+.themes-container-row {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  margin: 2rem 0;
+}
+
+.selected-theme--icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes moveup {
+  0% {
+    top: 2rem;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes movedown {
+  0% {
+    /* top: 2rem; */
+    opacity: 1;
+  }
+  100% {
+    top: 4rem;
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 550px) {
   html {
     font-size: 50%;
@@ -346,6 +442,9 @@ input {
     width: 100%;
     height: 65%;
     border-radius: 100%;
+    border-radius: 100%;
+    height: 6vw;
+    width: 6vw;
   }
 
   .virtual-radio-button-invisible {
@@ -355,10 +454,13 @@ input {
     width: 100%;
     height: 65%;
     border-radius: 100%;
+    height: 6vw;
+    width: 6vw;
   }
 
   .home {
-    height: 80vh;
+    /* height: 80vh; */
+    height: 100vw;
     background-color: white;
     width: 65vw;
     border: 1.2rem solid #f6f6f6;
@@ -398,7 +500,7 @@ input {
   .add-item-box {
     height: 5rem;
     width: 5rem;
-    background-color: #f28f3d;
+    background-color: var(--bg-color-primary);
     border-radius: 100%;
     position: absolute;
     right: 1rem;
@@ -422,6 +524,8 @@ input {
     width: 100%;
     height: 55%;
     border-radius: 100%;
+    width: 6.5vw;
+    height: 6.5vw;
   }
 
   .virtual-radio-button-invisible {
@@ -431,10 +535,12 @@ input {
     width: 100%;
     height: 55%;
     border-radius: 100%;
+    width: 6.5vw;
+    height: 6.5vw;
   }
 
   .home {
-    height: 80vh;
+    /* height: 80vh; */
     background-color: white;
     width: 70vw;
     border: 1.2rem solid #f6f6f6;

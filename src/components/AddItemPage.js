@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import "../index.css";
 
 class AddItemPage extends Component {
   componentDidMount() {
@@ -61,7 +62,7 @@ class AddItemPage extends Component {
               </select>
             </div>
             <div className="form-group margin-bottom-small">
-              <label>Date</label>
+              <label>End Date</label>
               <input
                 name="date"
                 id="date"
@@ -73,7 +74,7 @@ class AddItemPage extends Component {
               />
             </div>
             <div className="form-group margin-bottom-small">
-              <label>Time</label>
+              <label>End Time</label>
               <input
                 name="time"
                 id="time"
@@ -105,8 +106,7 @@ class AddItemPage extends Component {
                 required
               />
             </div>
-            <button type="submit">
-              {/* onClick={this.props.addItemHandler}> */}
+            <button type="submit" id="add-item-submit-button">
               <div className="add-item-box">
                 <i className="material-icons add-item--icon">add</i>
               </div>

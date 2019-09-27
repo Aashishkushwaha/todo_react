@@ -62,6 +62,12 @@ class SideDrawer extends Component {
                 </span>
               </div>
             </li>
+            <li>
+              <div className="flex-layout">
+                <div className="bullet bullet--white bullet--diamond" />
+                <span onClick={this.props.displayThemesPage}>Themes</span>
+              </div>
+            </li>
           </ul>
         </div>
         <Backdrop sideDrawerHandler={this.props.sideDrawerHandler} />

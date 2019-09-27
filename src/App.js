@@ -3,6 +3,7 @@ import HomePage from "./components/HomePage";
 import SideDrawer from "./components/SideDrawer";
 import AddItemPage from "./components/AddItemPage";
 import DisplayFilteredItemsPage from "./components/DisplayFilteredItemsPage";
+import ThemesPage from "./components/ThemesPage";
 import "./index.css";
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
       time: "",
       place: "",
       desc: "",
-
+      theme: "#f28f3d",
       minTime: "00:00:00",
 
       todoitems: []
@@ -30,15 +31,17 @@ class App extends Component {
       display: (
         <DisplayFilteredItemsPage
           filter={filter}
-          displayHomefromFilteredItems={this.displayHomefromFilteredItems}
+          addItemHandler={this.addItemHandler}
+          displayHome={this.displayHome}
           todoItems={this.state.todoitems}
         />
       )
     });
   };
 
-  displayHomefromFilteredItems = () => {
+  displayHome = () => {
     this.setState({
+      displayDrawer: false,
       display: (
         <HomePage
           completeItem={this.completeItem}
@@ -49,6 +52,43 @@ class App extends Component {
       )
     });
   };
+
+  changeTheme = primary => {
+    document
+      .getElementById("root")
+      .style.setProperty("--bg-color-primary", primary);
+    this.setState(
+      {
+        theme: primary
+      },
+      () => {
+        this.setState({
+          display: (
+            <ThemesPage
+              changeTheme={this.changeTheme}
+              displayHome={this.displayHome}
+              selectedTheme={this.state.theme}
+            />
+          )
+        });
+      }
+    );
+  };
+
+  displayThemesPage = () => {
+    this.setState({
+      displayDrawer: false,
+      display: (
+        <ThemesPage
+          changeTheme={this.changeTheme}
+          displayHome={this.displayHome}
+          selectedTheme={this.state.theme}
+        />
+      )
+    });
+  };
+
+  themeChangeHandler = () => {};
 
   completeItem = index => {
     let newtodoItems = [...this.state.todoitems];
@@ -150,8 +190,18 @@ class App extends Component {
 
   dateHandler = e => {
     const date = new Date();
-    let selectedDate = document.getElementById("date").value.slice(-2);
-    if (selectedDate > date.getDate()) {
+    let today =
+      date.getFullYear() +
+      "-" +
+      (date.getMonth() + 1 < 10
+        ? "0" + (date.getMonth() + 1)
+        : date.getMonth() + 1) +
+      "-" +
+      (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
+
+    let selectedFullDate = document.getElementById("date").value;
+
+    if (selectedFullDate > today) {
       this.setState(
         {
           date: e.target.value,
@@ -177,7 +227,7 @@ class App extends Component {
           });
         }
       );
-    } else if (selectedDate == date.getDate()) {
+    } else if (selectedFullDate <= today) {
       this.setState(
         {
           minTime:
@@ -278,6 +328,7 @@ class App extends Component {
         let result = "";
         result = this.state.displayDrawer ? (
           <SideDrawer
+            displayThemesPage={this.displayThemesPage}
             displayFilteredItemsPage={this.displayFilteredItemsPage}
             sideDrawerHandler={this.sideDrawerHandler}
             addItemHandler={this.addItemHandler}
