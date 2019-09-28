@@ -74,7 +74,6 @@ class AddItemPage extends Component {
                 name="time"
                 id="time"
                 type="time"
-                step="900"
                 value={this.props.time}
                 onChange={this.props.timeHandler}
                 min={this.props.mintime}
