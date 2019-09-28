@@ -41,12 +41,7 @@ class AddItemPage extends Component {
             <span>Todo List</span>
           </h2>
         </div>
-        <main
-          style={{
-            maxHeight: "57vh",
-            overflowY: "auto"
-          }}
-        >
+        <main className="form-container">
           <form onSubmit={this.props.addtodoItemHandler}>
             <div className="form-group margin-bottom-small">
               <label>Category</label>
@@ -79,6 +74,7 @@ class AddItemPage extends Component {
                 name="time"
                 id="time"
                 type="time"
+                step="900"
                 value={this.props.time}
                 onChange={this.props.timeHandler}
                 min={this.props.mintime}
@@ -107,6 +103,7 @@ class AddItemPage extends Component {
               />
             </div>
             <button type="submit" id="add-item-submit-button">
+              {/* onClick={this.props.addItemHandler}> */}
               <div className="add-item-box">
                 <i className="material-icons add-item--icon">add</i>
               </div>

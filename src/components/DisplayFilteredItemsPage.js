@@ -35,8 +35,8 @@ class DisplayFilteredItemsPage extends Component {
             <span>{label}</span>
           </h2>
         </div>
-        <main>
-          <div className="todos__container">
+        <main className="todos__container">
+          <div>
             {showItems.map((todoItem, index) => {
               let time = todoItem.time.slice(0, 5);
               let hours = time.slice(0, 2);

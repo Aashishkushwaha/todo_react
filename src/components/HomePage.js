@@ -18,8 +18,8 @@ class HomePage extends Component {
             <span>Todo List</span>
           </h2>
         </div>
-        <main>
-          <div className="todos__container">
+        <main className="todos__container">
+          <div>
             {this.props.todoItems.map((todoItem, index) => {
               let time = todoItem.time.slice(0, 5);
               let hours = time.slice(0, 2);
@@ -40,7 +40,6 @@ class HomePage extends Component {
                 "-" +
                 todoItem.date.slice(-5, -2) +
                 todoItem.date.slice(0, 4);
-              //console.log(time, displayTime, hours, minutes, displayDate);
               return (
                 <div className="todo-item-box" key={todoItem.id}>
                   <div className="checkbox-div">

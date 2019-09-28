@@ -33,17 +33,6 @@ class ThemesPage extends Component {
       { id: "theme_28", primary: "#1c2022" }
     ];
 
-    const setBgColor = primary => {
-      return {
-        height: "5rem",
-        margin: "0 .45rem",
-        width: "5rem",
-        borderRadius: "10rem",
-        position: "relative",
-        backgroundColor: `${primary}`
-      };
-    };
-
     return (
       <div className="home">
         <div className="header">
@@ -59,14 +48,15 @@ class ThemesPage extends Component {
             <span>Choose Theme</span>
           </h2>
         </div>
-        <main>
+        <main className="theme-container">
           <div className="todos__container">
             <div className="themes-container-row">
               {themes.slice(0, 5).map(theme => {
                 return (
                   <div
                     key={theme.id}
-                    style={setBgColor(theme.primary)}
+                    className="theme"
+                    style={{ backgroundColor: `${theme.primary}` }}
                     onClick={() => this.props.changeTheme(theme.primary)}
                   >
                     {this.props.selectedTheme === theme.primary ? (
@@ -86,7 +76,8 @@ class ThemesPage extends Component {
                 return (
                   <div
                     key={theme.id}
-                    style={setBgColor(theme.primary)}
+                    className="theme"
+                    style={{ backgroundColor: `${theme.primary}` }}
                     onClick={() => this.props.changeTheme(theme.primary)}
                   >
                     {this.props.selectedTheme === theme.primary ? (
@@ -106,7 +97,8 @@ class ThemesPage extends Component {
                 return (
                   <div
                     key={theme.id}
-                    style={setBgColor(theme.primary)}
+                    className="theme"
+                    style={{ backgroundColor: `${theme.primary}` }}
                     onClick={() => this.props.changeTheme(theme.primary)}
                   >
                     {this.props.selectedTheme === theme.primary ? (
@@ -126,7 +118,8 @@ class ThemesPage extends Component {
                 return (
                   <div
                     key={theme.id}
-                    style={setBgColor(theme.primary)}
+                    className="theme"
+                    style={{ backgroundColor: `${theme.primary}` }}
                     onClick={() => this.props.changeTheme(theme.primary)}
                   >
                     {this.props.selectedTheme === theme.primary ? (
@@ -146,7 +139,8 @@ class ThemesPage extends Component {
                 return (
                   <div
                     key={theme.id}
-                    style={setBgColor(theme.primary)}
+                    className="theme"
+                    style={{ backgroundColor: `${theme.primary}` }}
                     onClick={() => this.props.changeTheme(theme.primary)}
                   >
                     {this.props.selectedTheme === theme.primary ? (
@@ -166,7 +160,8 @@ class ThemesPage extends Component {
                 return (
                   <div
                     key={theme.id}
-                    style={setBgColor(theme.primary)}
+                    className="theme"
+                    style={{ backgroundColor: `${theme.primary}` }}
                     onClick={() => this.props.changeTheme(theme.primary)}
                   >
                     {this.props.selectedTheme === theme.primary ? (
